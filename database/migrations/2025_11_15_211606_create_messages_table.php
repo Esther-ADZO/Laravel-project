@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('titre'); 
             $table->text('contenu');
-            $table->enum('type', ['email', 'notif']); 
+            $table->enum('type', ['email', 'notification']); 
             $table->timestamps();
         });
     }
